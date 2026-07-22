@@ -1,0 +1,138 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.23.9",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "a332db8b967153368543f38c99b0837c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "e8fdbf8dd1e18c2298f41515afc164fd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "16b1ca15c74a493a723eb696ea0d18e5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"n1-features\">N1 features</h1>\n<ol>\n<li><marimo-tex class=\"arithmatex\">||(v_0||)</marimo-tex> - initial speed, in dataset: <marimo-tex class=\"arithmatex\">||(v_r||)</marimo-tex></li>\n<li><marimo-tex class=\"arithmatex\">||(m||)</marimo-tex> - mass, v datasete Mass</li>\n<li><marimo-tex class=\"arithmatex\">||(A||)</marimo-tex> - area, vypocitame z <marimo-tex class=\"arithmatex\">||(rel_{wid}||)</marimo-tex> v datasete</li>\n<li><marimo-tex class=\"arithmatex\">||(\\rho||)</marimo-tex> - density, ziskame z SOHO\\CELIAS</li>\n<li><marimo-tex class=\"arithmatex\">||(\\omega||)</marimo-tex> - solar wind speed, ziskame z SOHO\\CELIAS</li>\n</ol>\n<span class=\"paragraph\">vystup <marimo-tex class=\"arithmatex\">||(N_1||)</marimo-tex> je <marimo-tex class=\"arithmatex\">||(C||)</marimo-tex>, bezdimenzionalny koeficient odporu.</span>\n<h1 id=\"n2-features\">N2 features</h1>\n<ol>\n<li><marimo-tex class=\"arithmatex\">||(v_0||)</marimo-tex> - initial speed, in dataset: <marimo-tex class=\"arithmatex\">||(v_r||)</marimo-tex></li>\n<li><marimo-tex class=\"arithmatex\">||(m||)</marimo-tex> - mass</li>\n<li><marimo-tex class=\"arithmatex\">||(A||)</marimo-tex> - area</li>\n<li><marimo-tex class=\"arithmatex\">||(\\rho||)</marimo-tex> - density</li>\n<li><marimo-tex class=\"arithmatex\">||(\\omega||)</marimo-tex> - solar wind speed</li>\n<li><marimo-tex class=\"arithmatex\">||(C||)</marimo-tex> z <marimo-tex class=\"arithmatex\">||(N_1||)</marimo-tex></li>\n</ol>\n<span class=\"paragraph\">vystup <marimo-tex class=\"arithmatex\">||(N_2||)</marimo-tex> je <marimo-tex class=\"arithmatex\">||(TT||)</marimo-tex>, travel time.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "2bf5e9a14f6734f16da7e18c0bf4cb8f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"wind-speed-extraction\">Wind speed extraction</h2>\n<span class=\"paragraph\">Rychlost vetra sa berie ako priemer jednej hodiny po zacati eventu, netrapi nas kde je CME, iba rychlost vetra v L1 v tom case kedy ale CME ide, presnejsie ked je <marimo-tex class=\"arithmatex\">||(20R\\odot||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "61c44cccbafab63144f60071f72b26ae",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"vypocet-area-z-rel_wid\">Vypocet Area z rel_wid</h2>\n<marimo-tex class=\"arithmatex\">||[\nA = \\pi\\left(r_0 \\sin\\left(\\frac{rel_{wid}}{2}\\right)\\right)^2\n||]</marimo-tex><span class=\"paragraph\">kde <marimo-tex class=\"arithmatex\">||(r_0 = 20 R \\odot = 1.3914\\times10^7 \\text{km}||)</marimo-tex></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "799370995bdc9602aba52129d5261f29",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"loss-function-lt-n1x-for-n1\">Loss function <marimo-tex class=\"arithmatex\">||(L(t, N1(x))||)</marimo-tex> for N1</h1>\n<marimo-tex class=\"arithmatex\">||[\nL_c(t, N1(x)) = \\left(\\frac{m\\sigma}{A\\rho N1(x)}\\log\\left(1 + \\sigma\\frac{A\\rho N1(x)}{m}(v_0 - w)t + wt\\right) + r_0 - 1\\right)^2\n||]</marimo-tex><span class=\"paragraph\">kde</span>\n<marimo-tex class=\"arithmatex\">||[\n\\sigma = \\frac{v_0 - w}{\\sqrt{(v_0 - w)^2 + \\delta}}\n||]</marimo-tex><span class=\"paragraph\">kde <marimo-tex class=\"arithmatex\">||(\\delta||)</marimo-tex> je mala kladna hodnota</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "50af40b1faa1c9e259a817ff2b5c5261",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='SFPL-0' random-id='9b0a1d7c-c7ba-96d2-3195-ab2d38749f26'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;&#92;&quot;:1,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-01-07 08:35:05.600&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:67.41499999999999,&#92;&quot;v_r&#92;&quot;:190.53,&#92;&quot;Mass&#92;&quot;:580000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.5585053606381855,&#92;&quot;A&#92;&quot;:46209367163953.41},{&#92;&quot;&#92;&quot;:2,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-02-07 07:35:12.440&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:66.41305555555556,&#92;&quot;v_r&#92;&quot;:705.35,&#92;&quot;Mass&#92;&quot;:4100000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.7853981633974483,&#92;&quot;A&#92;&quot;:89070356774969.36},{&#92;&quot;&#92;&quot;:3,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-04-07 17:26:59.000&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:84.55027777777778,&#92;&quot;v_r&#92;&quot;:1133.7,&#92;&quot;Mass&#92;&quot;:&#92;&quot;1e+16&#92;&quot;,&#92;&quot;rel_wid&#92;&quot;:1.1519173063162575,&#92;&quot;A&#92;&quot;:180414483738561.12},{&#92;&quot;&#92;&quot;:4,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-05-12 09:00:08.640&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:71.9975,&#92;&quot;v_r&#92;&quot;:774.63,&#92;&quot;Mass&#92;&quot;:4200000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.7853981633974483,&#92;&quot;A&#92;&quot;:89070356774969.36},{&#92;&quot;&#92;&quot;:5,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-05-22 07:41:17.480&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:104.31166666666668,&#92;&quot;v_r&#92;&quot;:354.13,&#92;&quot;Mass&#92;&quot;:2200000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.5585053606381855,&#92;&quot;A&#92;&quot;:46209367163953.41},{&#92;&quot;&#92;&quot;:6,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-07-31 00:19:26.600&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:84.67583333333333,&#92;&quot;v_r&#92;&quot;:157.85,&#92;&quot;Mass&#92;&quot;:820000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.5585053606381855,&#92;&quot;A&#92;&quot;:46209367163953.41},{&#92;&quot;&#92;&quot;:7,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-08-30 06:56:41.000&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:102.05527777777776,&#92;&quot;v_r&#92;&quot;:557.61,&#92;&quot;Mass&#92;&quot;:1700000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.7853981633974483,&#92;&quot;A&#92;&quot;:89070356774969.36},{&#92;&quot;&#92;&quot;:8,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-09-18 01:21:42.760&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:91.63805555555555,&#92;&quot;v_r&#92;&quot;:545.09,&#92;&quot;Mass&#92;&quot;:2600000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.7853981633974483,&#92;&quot;A&#92;&quot;:89070356774969.36},{&#92;&quot;&#92;&quot;:9,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-09-28 06:02:03.120&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:81.96555555555555,&#92;&quot;v_r&#92;&quot;:603.39,&#92;&quot;Mass&#92;&quot;:4000000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.7853981633974483,&#92;&quot;A&#92;&quot;:89070356774969.36},{&#92;&quot;&#92;&quot;:10,&#92;&quot;Start_Date&#92;&quot;:&#92;&quot;1997-10-06 23:13:39.440&#92;&quot;,&#92;&quot;Transit_time&#92;&quot;:94.77222222222224,&#92;&quot;v_r&#92;&quot;:749.38,&#92;&quot;Mass&#92;&quot;:2900000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.7853981633974483,&#92;&quot;A&#92;&quot;:89070356774969.36}]&quot;' data-total-rows='164' data-total-columns='6' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;Start_Date&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;Transit_time&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;v_r&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;Mass&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;rel_wid&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;A&quot;,[&quot;number&quot;,&quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='true' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "08ce07c29793bf579356e1d33fab8d7f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"sohocelias-rho-a-omega-data\">SOHO\\CELIAS <marimo-tex class=\"arithmatex\">||(\\rho||)</marimo-tex> a <marimo-tex class=\"arithmatex\">||(\\omega||)</marimo-tex> data</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mpMx",
+      "code_hash": "0d048622e11b9b30b299806e30d7a44c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='mpMx-0' random-id='b1a8f0d4-cb21-3c38-bb2f-ff78eb73c2d9'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;&#92;&quot;:&#92;&quot;count&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:119.0,&#92;&quot;Transit_time&#92;&quot;:119.0,&#92;&quot;v_r&#92;&quot;:119.0,&#92;&quot;Mass&#92;&quot;:119.0,&#92;&quot;rel_wid&#92;&quot;:119.0,&#92;&quot;A&#92;&quot;:119.0,&#92;&quot;rho_g_km3&#92;&quot;:119.0,&#92;&quot;w_km_s&#92;&quot;:119.0,&#92;&quot;n_valid&#92;&quot;:0.0,&#92;&quot;error&#92;&quot;:0.0},{&#92;&quot;&#92;&quot;:&#92;&quot;mean&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:104.53781512605042,&#92;&quot;Transit_time&#92;&quot;:70.11003267973858,&#92;&quot;v_r&#92;&quot;:1205.682857142857,&#92;&quot;Mass&#92;&quot;:&#92;&quot;9604571428571428.0&#92;&quot;,&#92;&quot;rel_wid&#92;&quot;:1.0264442663934719,&#92;&quot;A&#92;&quot;:150481013126343.2,&#92;&quot;rho_g_km3&#92;&quot;:1.1985276494741973e-08,&#92;&quot;w_km_s&#92;&quot;:424.9137331113474,&#92;&quot;n_valid&#92;&quot;:NaN,&#92;&quot;error&#92;&quot;:NaN},{&#92;&quot;&#92;&quot;:&#92;&quot;std&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:62.70887671545939,&#92;&quot;Transit_time&#92;&quot;:17.877439247195422,&#92;&quot;v_r&#92;&quot;:604.3524246047714,&#92;&quot;Mass&#92;&quot;:&#92;&quot;1.5294383983456612e+16&#92;&quot;,&#92;&quot;rel_wid&#92;&quot;:0.20783095697628562,&#92;&quot;A&#92;&quot;:48067960659559.836,&#92;&quot;rho_g_km3&#92;&quot;:7.686361260191757e-09,&#92;&quot;w_km_s&#92;&quot;:102.47538175743956,&#92;&quot;n_valid&#92;&quot;:NaN,&#92;&quot;error&#92;&quot;:NaN},{&#92;&quot;&#92;&quot;:&#92;&quot;min&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:1.0,&#92;&quot;Transit_time&#92;&quot;:30.781111111111112,&#92;&quot;v_r&#92;&quot;:164.99,&#92;&quot;Mass&#92;&quot;:64000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.2879793265790644,&#92;&quot;A&#92;&quot;:12523133591952.62,&#92;&quot;rho_g_km3&#92;&quot;:1.259108235746622e-09,&#92;&quot;w_km_s&#92;&quot;:282.47899159663865,&#92;&quot;n_valid&#92;&quot;:NaN,&#92;&quot;error&#92;&quot;:NaN},{&#92;&quot;&#92;&quot;:&#92;&quot;25%&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:52.5,&#92;&quot;Transit_time&#92;&quot;:57.79097222222222,&#92;&quot;v_r&#92;&quot;:806.2149999999999,&#92;&quot;Mass&#92;&quot;:3250000000000000.0,&#92;&quot;rel_wid&#92;&quot;:0.7853981633974483,&#92;&quot;A&#92;&quot;:89070356774969.36,&#92;&quot;rho_g_km3&#92;&quot;:7.15200472136806e-09,&#92;&quot;w_km_s&#92;&quot;:353.7310924369748,&#92;&quot;n_valid&#92;&quot;:NaN,&#92;&quot;error&#92;&quot;:NaN},{&#92;&quot;&#92;&quot;:&#92;&quot;50%&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:93.0,&#92;&quot;Transit_time&#92;&quot;:71.92138888888888,&#92;&quot;v_r&#92;&quot;:1102.0,&#92;&quot;Mass&#92;&quot;:7000000000000000.0,&#92;&quot;rel_wid&#92;&quot;:1.1519173063162575,&#92;&quot;A&#92;&quot;:180414483738561.12,&#92;&quot;rho_g_km3&#92;&quot;:1.0178025882889245e-08,&#92;&quot;w_km_s&#92;&quot;:392.5126050420168,&#92;&quot;n_valid&#92;&quot;:NaN,&#92;&quot;error&#92;&quot;:NaN},{&#92;&quot;&#92;&quot;:&#92;&quot;75%&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:164.5,&#92;&quot;Transit_time&#92;&quot;:83.78541666666666,&#92;&quot;v_r&#92;&quot;:1433.35,&#92;&quot;Mass&#92;&quot;:&#92;&quot;1.3e+16&#92;&quot;,&#92;&quot;rel_wid&#92;&quot;:1.1519173063162575,&#92;&quot;A&#92;&quot;:180414483738561.12,&#92;&quot;rho_g_km3&#92;&quot;:1.4660541205967172e-08,&#92;&quot;w_km_s&#92;&quot;:469.65966386554624,&#92;&quot;n_valid&#92;&quot;:NaN,&#92;&quot;error&#92;&quot;:NaN},{&#92;&quot;&#92;&quot;:&#92;&quot;max&#92;&quot;,&#92;&quot;Unnamed: 0&#92;&quot;:208.0,&#92;&quot;Transit_time&#92;&quot;:108.46722222222222,&#92;&quot;v_r&#92;&quot;:3567.4,&#92;&quot;Mass&#92;&quot;:&#92;&quot;1.6e+17&#92;&quot;,&#92;&quot;rel_wid&#92;&quot;:1.1519173063162575,&#92;&quot;A&#92;&quot;:180414483738561.12,&#92;&quot;rho_g_km3&#92;&quot;:4.011488474127825e-08,&#92;&quot;w_km_s&#92;&quot;:763.7899159663865,&#92;&quot;n_valid&#92;&quot;:NaN,&#92;&quot;error&#92;&quot;:NaN}]&quot;' data-total-rows='8' data-total-columns='10' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;Unnamed: 0&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;Transit_time&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;v_r&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;Mass&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;rel_wid&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;A&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;rho_g_km3&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;w_km_s&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;n_valid&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;error&quot;,[&quot;number&quot;,&quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-hidden-columns='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "8ee2083208e8b6842b850f422f5497c2",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "4602c1178fc3267954840889773ade53",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
