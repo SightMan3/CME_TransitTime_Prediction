@@ -164,7 +164,7 @@ Family 2 is already much better even with synthetic data, this could be acredite
 Fine-tuning as it has been said, is done on real data. The setup is following: in another training loop the best weights, from pre-training, are loaded. All of the weights are enabled for gradient updating. It has been tried to leave just the last two rows, however that yielded little to none difference, thus we have propmtply enabled all of the weights and are disclosing only these results.
 
 ## Model Family 1 Fine-tuning Results
-In the case of Family 1 we have 79 events with valid solutions of coefficient $a$, thse events are split into train and test sets, the validation is done through k-fold validation, we are using 5 folds and 10 different seeds. The MAE is than averaged over these 10 realizations of the 5-fold training. This validation is done for multiple weights $\lambda$ of the physics part of the loss function $\mathcal{L}_{\text{phys}} = \frac{1}{\text{AU}^2}(r(\hat t) - \text{AU})^2$. We have used the following values $\lambda = \{0, 100, 500, 1000, 2000, 5000\}$. The physics term is not in the same units as the data term. Even after the scaling factor $\frac{1}{\text{AU}^2}$ the physics term is roughly 25-30x smaller than the data term, which the $\lambda$ factor fixed by fine-tuning. In the table below you can find these results:
+In the case of Family 1 we have 79 events with valid solutions of coefficient $a$, the validation and trainig is done through k-fold validation, we are using 5 folds and 10 different seeds. The MAE is than averaged over these 10 realizations of the 5-fold training. This validation is done for multiple weights $\lambda$ of the physics part of the loss function $\mathcal{L}_{\text{phys}} = \frac{1}{\text{AU}^2}(r(\hat t) - \text{AU})^2$. We have used the following values $\lambda = \{0, 100, 500, 1000, 2000, 5000\}$. The physics term is not in the same units as the data term. Even after the scaling factor $\frac{1}{\text{AU}^2}$ the physics term is roughly 25-30x smaller than the data term, which the $\lambda$ factor fixed by fine-tuning. In the table below you can find these results:
 
 | $\lambda_{\mathrm{phys}}$ | MAE (h) |
 |---|---|
@@ -210,4 +210,4 @@ predictions on the correct branch, and only then does the physics term help,
 by fine-tuning the right solution instead of finding a wrong one. 
 
 ## Model Family 2 fine-tuning results
-In the case of Family 2 events we have only 13 events for which we have a valid solution of $a$. 
+In the case of Family 2 events we have only 13 events for which we have a valid solution of $a$. Due to the scarcity of events we are using even more drastic training and validation scheme than k-fold, its a leave-one-out (LOO). LOO maximazes the training set (12 out of 13) every run and still giving out-of-sample prediction for every event. Again like in Model Family 1 results we are testing multiple lambdas to see the effect of physical term: 
